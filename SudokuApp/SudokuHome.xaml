@@ -8,7 +8,81 @@
       d:DesignHeight="300" d:DesignWidth="300"
       Title="Sudoku - Home">
 
-    <Grid>
+    <Grid  Margin="10,0,10,10">
+
+        <Grid.Resources>
+            <!-- generator settings Data -->
+            <XmlDataProvider x:Key="ComplexityDataSource" XPath="Complexity">
+                <x:XData>
+                    <Complexity xmlns="">
+                        <Level Name="Easy" RuleSet="Default">
+                            <Complex RuleType="Column" Filled="7" />
+                            <Complex RuleType="Row" Filled="5" />
+                        </Level>
+
+                        <Level Name="Medium" RuleSet="Beginner">
+                            <Complex RuleType="Column" Filled="5" />
+                            <Complex RuleType="Row" Filled="5" />
+                        </Level>
+
+                        <Level Name="High" RuleSet="Advanced">
+                            <Complex RuleType="Column" Filled="3" />
+                            <Complex RuleType="Row" Filled="3" />
+                        </Level>
+                    </Complexity>
+                </x:XData>
+            </XmlDataProvider>
+
+            <!-- Name item template in listbox -->
+            <DataTemplate x:Key="nameItemTemplate">
+                <Label Content="{Binding XPath=@Name}"/>
+            </DataTemplate>
+
+            <!--Templates to display expense report data-->
+            
+                <!-- Reason item template -->
+                <DataTemplate x:Key="typeItemTemplate">
+                <Label Content="{Binding XPath=@RuleType}"/>
+                </DataTemplate>
+                <!-- Amount item template -->
+                <DataTemplate x:Key="filledItemTemplate">
+                    <Label Content="{Binding XPath=@Filled}"/>
+                </DataTemplate>
+
+            </Grid.Resources>
+        <!-- view -->
+        <Grid.Background>
+            <ImageBrush ImageSource="watermark.png"/>
+        </Grid.Background>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="230" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Column="1" Style="{StaticResource headerTextStyle}">
+            Generate Sudoku
+        </Label>
+        <!-- levels -->
+        <Border Grid.Column="1" Grid.Row="1"  Style="{StaticResource listHeaderStyle}">
+                <Label Style="{StaticResource listHeaderTextStyle}">Difficulty</Label>
+        </Border>
+    
+        <ListBox Name="complexityListBox" Grid.Column="1" Grid.Row="2"
+            ItemsSource="{Binding Source={StaticResource ComplexityDataSource}, XPath=Level}"
+            ItemTemplate="{StaticResource nameItemTemplate}">
+        </ListBox>
+
+        <!-- Generate sudoku button -->
+        <Button Grid.Column="1" Grid.Row="3" Click="Go_Generate" Style="{StaticResource buttonStyle}">Generate</Button>
+
         
     </Grid>
 </Page>
