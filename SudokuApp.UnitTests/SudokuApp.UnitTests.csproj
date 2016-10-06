@@ -63,7 +63,7 @@
     <Compile Include="UnitTestBase.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\SudokuApp.ViewModel\BaseNotifyChange\Sudoku.ViewModel.csproj">
+    <ProjectReference Include="..\SudokuApp.ViewModel\Sudoku.ViewModel.csproj">
       <Project>{73904322-DD05-4EAD-994D-763A5A3FF201}</Project>
       <Name>Sudoku.ViewModel</Name>
     </ProjectReference>

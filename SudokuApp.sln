@@ -20,7 +20,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SudokuApp.Model", "SudokuAp
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ViewModel", "ViewModel", "{F4A9525C-0BB7-48FA-870B-C9EA874D8657}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sudoku.ViewModel", "..\SudokuApp.ViewModel\BaseNotifyChange\Sudoku.ViewModel.csproj", "{73904322-DD05-4EAD-994D-763A5A3FF201}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sudoku.ViewModel", "SudokuApp.ViewModel\Sudoku.ViewModel.csproj", "{73904322-DD05-4EAD-994D-763A5A3FF201}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "View", "View", "{1534FA9D-99E5-4477-83E7-7623914F2DC1}"
 EndProject
