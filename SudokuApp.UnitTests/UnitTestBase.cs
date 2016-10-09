@@ -9,7 +9,15 @@ namespace SudokuApp.UnitTests
     public class UnitTestBase
     {
         protected Mock<IService> serviceMock = new Mock<IService>();
-        public readonly List<SudokuProblem> ExpectedProblemList = new List<SudokuProblem>();
+        public readonly List<SudokuProblem> ExpectedProblemList = new List<SudokuProblem>
+        {
+            new SudokuProblem
+            {
+                Name = "Easy",
+                Complexity = 7,
+                Level = 5
+            }
+        };
 
         [TestInitialize]
         private void TestSetup()
