@@ -7,8 +7,8 @@
     <ProjectGuid>{73904322-DD05-4EAD-994D-763A5A3FF201}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Sudoku.ViewModel</RootNamespace>
-    <AssemblyName>Sudoku.ViewModel</AssemblyName>
+    <RootNamespace>SudokuApp.ViewModel</RootNamespace>
+    <AssemblyName>SudokuApp.ViewModel</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -42,16 +42,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseNotifyPropertyChanged.cs" />
+    <Compile Include="DefaultNavigator.cs" />
     <Compile Include="DefaultServiceProvider.cs" />
     <Compile Include="DeleteCommand.cs" />
+    <Compile Include="INavigator.cs" />
     <Compile Include="IService.cs" />
+    <Compile Include="IStorage.cs" />
     <Compile Include="SudokuProblemViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SudokuSolutionViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\SudokuApp\SudokuApp.Model\SudokuApp.Model.csproj">
       <Project>{A9D2850C-0B1E-4F2C-98A2-42BD61B2BB84}</Project>
       <Name>SudokuApp.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SudokuApp.Domain\SudokuApp.Domain.csproj">
+      <Project>{0DCE8982-76B9-4839-9B90-2372C7A80CB1}</Project>
+      <Name>SudokuApp.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

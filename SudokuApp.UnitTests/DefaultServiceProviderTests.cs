@@ -22,7 +22,7 @@ namespace SudokuApp.UnitTests
         public void GivenViewModel_WhenInitialized_ProblemsAreAvailable()
         {
             // Arrange
-            var whenInitialized = new SudokuProblemViewModel(GivenDefaultServiceProvider());
+            var whenInitialized = new SudokuProblemViewModel(GivenDefaultServiceProvider(), Navigator);
             // Act
             var problemsAreListedIn = whenInitialized.Service.GetProblems();
             // Assert
@@ -33,7 +33,7 @@ namespace SudokuApp.UnitTests
         public void GivenViewModel_WhenNullService_ProblemsAreAvailable()
         {
             // Arrange
-            var whenNullService = new SudokuProblemViewModel(null);
+            var whenNullService = GivenSudokuProblemViewModel();
             // Act
             var problemsAreListedIn = whenNullService.Service.GetProblems();
             // Assert

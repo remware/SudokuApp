@@ -1,15 +1,14 @@
+using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using SudokuApp.ViewModel;
+
 
 namespace SudokuApp.UnitTests
 {
     [TestClass]
     public class SudokuProblemViewModelTests : UnitTestBase
     {
-        private MockRepository mockRepository;
-
-        private IService anyService;
+        private MockRepository mockRepository;        
 
         [TestInitialize]
         public void TestInitialize()
@@ -28,18 +27,22 @@ namespace SudokuApp.UnitTests
         public void GivenSudokuProblemViewModel_WhenSetEasyLevel_AnEasyProblemIsLoaded()
         {
             // Arrange            
-            var viewModel = GetViewModel();      
+            var viewModel = GivenSudokuProblemViewModel();      
             // Act
-            var first = viewModel.CurrentProblem;
+            var easyLevel = viewModel.CurrentProblem;
             // Assert
-            Assert.AreSame(ExpectedProblemList[0].Name, first.Name);
-
-
+            Assert.AreSame(ExpectedProblemList[0].Name, easyLevel.Name);
         }
 
-        private SudokuProblemViewModel GetViewModel()
+        [TestMethod]
+        public void GivenSudokuProblemView_NavigateToSolution_IsOK()
         {
-            return new SudokuProblemViewModel(anyService);
+            // Arrange
+            var viewModel = this.GivenSudokuProblemViewModel();            
+            //Act
+            viewModel.ViewSudokuProblem(viewModel.CurrentProblem);
+            //Assert
+            Assert.IsNotNull(viewModel.CurrentProblem);
         }
 
     }

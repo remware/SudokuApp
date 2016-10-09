@@ -43,6 +43,12 @@
     <Compile Include="SudokuProblem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SudokuApp.Domain\SudokuApp.Domain.csproj">
+      <Project>{0DCE8982-76B9-4839-9B90-2372C7A80CB1}</Project>
+      <Name>SudokuApp.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

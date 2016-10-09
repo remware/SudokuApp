@@ -8,7 +8,11 @@ namespace SudokuApp.UnitTests
 {
     public class UnitTestBase
     {
-        private Mock<IService> serviceMock = new Mock<IService>();
+        private readonly Mock<IService> serviceMock = new Mock<IService>();
+        private IService anyService;
+
+        public readonly INavigator Navigator = new DefaultNavigator();
+
         public readonly List<SudokuProblem> ExpectedProblemList = new List<SudokuProblem>
         {
             new SudokuProblem
@@ -18,6 +22,10 @@ namespace SudokuApp.UnitTests
                 Level = 5
             }
         };
+        public SudokuProblemViewModel GivenSudokuProblemViewModel()
+        {
+            return new SudokuProblemViewModel(anyService, Navigator);
+        }
 
         [TestInitialize]
         private void TestSetup()

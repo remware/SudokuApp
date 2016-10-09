@@ -7,12 +7,14 @@ namespace SudokuApp.ViewModel
 {
     public class SudokuProblemViewModel : BaseNotifyPropertyChanged
     {      
-        public SudokuProblemViewModel(IService service)
+        public SudokuProblemViewModel(IService service, INavigator navigator)
         {
  
             Problems = new ObservableCollection<SudokuProblem>();
             
-            Service = (service == null) ? new DefaultServiceProvider() : service;
+            Service = service ?? new DefaultServiceProvider();
+
+            Navigator = navigator;
 
             PopulateProblems(Service.GetProblems());
 
@@ -28,6 +30,10 @@ namespace SudokuApp.ViewModel
             CurrentProblem = Problems.FirstOrDefault();
         }
 
+        public void ViewSudokuProblem(SudokuProblem problem)
+        {
+            Navigator.NavigateToViewModel<SudokuSolutionViewModel>(problem);
+        }
         private void PopulateProblems(IEnumerable<SudokuProblem> problems)
         {
             Problems.Clear();
@@ -41,6 +47,8 @@ namespace SudokuApp.ViewModel
         public DeleteCommand Delete { get; private set; }
         public ObservableCollection<SudokuProblem> Problems { get; private set; }
         public IService Service { get; private set; }
+
+        public INavigator Navigator { get; private set; }
         public bool CanDelete
         {
             get { return CurrentProblem != null; }

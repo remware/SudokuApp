@@ -27,16 +27,16 @@ namespace SudokuApp.UnitTests
         public void GivenGenerator_WhenInitialized_SudokuProblemIsAvailable()
         {
             // arrange
-            SampleGeneratorBase sampleGeneratorBase = CreateSampleGeneratorBase();
+            SudokuProblemBase sampleGeneratorBase = CreateSampleGeneratorBase();
             //  act
             var sample = sampleGeneratorBase.GetSudokuProblem(easyColumns, easyRows);
             // assert
             Assert.AreNotEqual(sample, sampleGeneratorBase.EmptyRow);
         }
 
-        private SampleGeneratorBase CreateSampleGeneratorBase()
+        private SudokuProblemBase CreateSampleGeneratorBase()
         {
-            return new SampleGeneratorBase();
+            return new SudokuProblemBase();
         }
     }
 }

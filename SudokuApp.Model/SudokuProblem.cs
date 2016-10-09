@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SudokuApp.Domain;
+using System;
 using System.ComponentModel;
 
 namespace SudokuApp.Model
@@ -6,7 +7,6 @@ namespace SudokuApp.Model
     public class SudokuProblem : INotifyPropertyChanged
     {
         private string name;
-
 
         public string Name
         {
@@ -24,10 +24,7 @@ namespace SudokuApp.Model
         private void RaisePropertyChanged(string property)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(property));
-            }
+            handler?.Invoke(this, new PropertyChangedEventArgs(property));
         }
 
         // columns filled
@@ -54,17 +51,14 @@ namespace SudokuApp.Model
             }
         }
 
-        public string DisplayText
-        {
-            get
-            {
-                return string.Format("{0} problem level: {1}, complexity: {2} ", Name, Level, Complexity);
-            }
-        }
+        public string DisplayText => $"{Name} problem level: {Level}, complexity: {Complexity} ";
+
+        public SudokuProblemBase Challenge;
 
         public override bool Equals(object obj)
         {
-            return obj is SudokuProblem && ((SudokuProblem)obj).DisplayText.Equals(DisplayText);
+            var problem = obj as SudokuProblem;
+            return problem != null && problem.DisplayText.Equals(DisplayText);
         }
 
         public override int GetHashCode()
