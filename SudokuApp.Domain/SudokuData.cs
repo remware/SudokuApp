@@ -6,7 +6,7 @@ namespace SudokuApp.Domain
     {
         public IList<IList<int>> SudokuSquare { get; set; }
 
-        public static int Maxsize => _maxsize;
+        private const int Maxsize = 9;
 
         public readonly List<int> EmptyRow = new List<int> {0, 0, 0, 0, 0, 0, 0, 0, 0};
 
@@ -17,13 +17,12 @@ namespace SudokuApp.Domain
 
         public void InitializeSquare()
         {
-            for (int i = 0; i < _maxsize; i++)
+            for (var i = 0; i < Maxsize; i++)
             {
                 SudokuSquare.Add(EmptyRow);
             }
         }
-
-        internal const int _maxsize = 9;
+       
 
         private static void Expand(List<int> list, int index)
         {
