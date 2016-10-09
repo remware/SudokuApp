@@ -61,6 +61,7 @@
     <Compile Include="DefaultServiceProviderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SampleGeneratorBaseTests.cs" />
+    <Compile Include="SudokuProblemViewModelTests.cs" />
     <Compile Include="UnitTestBase.cs" />
   </ItemGroup>
   <ItemGroup>

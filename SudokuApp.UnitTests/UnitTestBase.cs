@@ -8,7 +8,7 @@ namespace SudokuApp.UnitTests
 {
     public class UnitTestBase
     {
-        protected Mock<IService> serviceMock = new Mock<IService>();
+        private Mock<IService> serviceMock = new Mock<IService>();
         public readonly List<SudokuProblem> ExpectedProblemList = new List<SudokuProblem>
         {
             new SudokuProblem

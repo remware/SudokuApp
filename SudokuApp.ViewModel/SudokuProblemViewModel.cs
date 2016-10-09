@@ -1,12 +1,12 @@
 ﻿using SudokuApp.Model;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace SudokuApp.ViewModel
 {
     public class SudokuProblemViewModel : BaseNotifyPropertyChanged
     {      
-
         public SudokuProblemViewModel(IService service)
         {
  
@@ -24,6 +24,8 @@ namespace SudokuApp.ViewModel
                     CurrentProblem = null;
                     PopulateProblems(Service.GetProblems());
                 });
+
+            CurrentProblem = Problems.FirstOrDefault();
         }
 
         private void PopulateProblems(IEnumerable<SudokuProblem> problems)
