@@ -1,4 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
+using System.Text;
 
 namespace SudokuApp.Domain
 {
@@ -15,12 +19,44 @@ namespace SudokuApp.Domain
             SudokuSquare = sudokuSquare;
         }
 
+        public SudokuData(string packedData)
+        {
+           InitializeSquare();
+            var pos = 0;
+            var row = 0;
+            if (packedData.Length > 80) return;
+
+            foreach (var number in packedData)
+            {
+                SudokuSquare[row][pos] = (int) char.GetNumericValue(number);
+                pos++;
+                if (pos > Maxsize - 1)
+                {
+                    pos = 0;
+                    row++;
+                }
+            }
+        }
+
         public void InitializeSquare()
         {
             for (var i = 0; i < Maxsize; i++)
             {
                 SudokuSquare.Add(EmptyRow);
             }
+        }
+
+        public string State()
+        {
+            var stateSb = new StringBuilder();
+            foreach (var row in SudokuSquare)
+            {
+                foreach (var column in row)
+                {
+                    stateSb.Append(row.ElementAt(column).ToString());
+                }              
+            }
+            return stateSb.ToString();
         }
        
 

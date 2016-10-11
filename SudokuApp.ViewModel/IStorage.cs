@@ -1,8 +1,12 @@
 ﻿using SudokuApp.Domain;
 using System.Threading.Tasks;
+using SudokuApp.Repository;
 
 namespace SudokuApp.ViewModel
 {
+    /// <summary>
+    /// Storage Service
+    /// </summary>
     public interface IStorage
     {
        
@@ -12,7 +16,7 @@ namespace SudokuApp.ViewModel
 		/// <typeparam name="T">The type of data to load.</typeparam>
 		/// <param name="name">The name of problem.</param>
 		/// <returns>Returns the sudoku data.</returns>
-		Task<T> LoadAsync<T>(string name);
+		Task<SudokuData> LoadAsync(string name);
 
         /// <summary>
         /// Saves data to repository storage.
