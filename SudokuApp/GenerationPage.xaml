@@ -17,7 +17,23 @@
             <RowDefinition Height="Auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
-
+        <Expander Width="200" HorizontalContentAlignment="Stretch"  Grid.Column="0" Grid.Row="1">
+            <Expander.Header>
+                <BulletDecorator>
+                    <BulletDecorator.Bullet>
+                        <Image Width="10" Source="images\icon.jpg"/>
+                    </BulletDecorator.Bullet>
+                    <TextBlock Margin="20,0,0,0">Available problems</TextBlock>
+                </BulletDecorator>
+            </Expander.Header>
+            <Expander.Content>
+                <ScrollViewer Height="Auto">
+                    <TextBlock TextWrapping="Wrap">
+                     Lorem ipsum dolor sit amet, consectetur adipisicing elit
+                    </TextBlock>
+                </ScrollViewer>
+            </Expander.Content>
+        </Expander>
 
         <Label Grid.Column="1" Style="{StaticResource headerTextStyle}">
             Sudoku level

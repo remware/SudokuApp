@@ -9,6 +9,6 @@ namespace SudokuApp.Repository
         public string Author { get; set; }
         public string ProblemState { get; set; }
         public bool Solved { get; set; }
-        public DateTime PublishedDate { get; set; }
+        public DateTime UpdatedDate { get; set; }
     }
 }
