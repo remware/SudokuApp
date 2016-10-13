@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace SudokuApp
 {
@@ -18,5 +19,6 @@ namespace SudokuApp
             // Bind to expense report data.
             this.DataContext = data;
         }
+
     }
 }

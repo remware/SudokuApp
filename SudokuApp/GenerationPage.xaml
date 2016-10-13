@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:SudokuApp"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
+      DataContext="{Binding SudokuProblemViewModel}"
       Title="Statistics Page">
 
     <Grid>
