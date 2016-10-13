@@ -41,7 +41,7 @@ namespace SudokuApp.ViewModel
                             Author = "Rem",
                             Solved = true,
                             ProblemState = data.State(),
-                            PublishedDate = DateTime.Today
+                            UpdatedDate = DateTime.Today
                         });
                 }
                 unitOfWork.Complete();

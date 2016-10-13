@@ -1,38 +1,37 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using SudokuApp.Model;
 
 namespace SudokuApp.ViewModel
 {
     public class SudokuSolutionViewModel : BaseNotifyPropertyChanged
     {
-        private readonly IStorage Storage;
+        private readonly IStorage _storage;
 
         public SudokuSolutionViewModel(IStorage storage)			
 		{
-            Storage = storage;
+            _storage = storage;
         }
 
         public async Task LoadProblemState()
         {
-            var problem = await Storage.LoadAsync<SudokuProblem>(ProblemState.Name);
-            ProblemState.Challenge = problem.Challenge;
+            var problem = await _storage.LoadAsync(ProblemState.Name);
+            ProblemState.Challenge = problem;
         }
 
 
         protected async Task SaveProblemState()
         {
             
-            await Storage.SaveAsync(ProblemState.Name, ProblemState.Challenge);
+            await _storage.SaveAsync(ProblemState.Name, ProblemState.Challenge);
         }
 
-        private SudokuProblem problemState;
+        private SudokuProblem _problemState;
         public SudokuProblem ProblemState
         {
-            get { return problemState; }
+            get { return _problemState; }
             set
             {
-                problemState = value;
+                _problemState = value;
                 RaisePropertyChanged("ProblemState");
             }
         }

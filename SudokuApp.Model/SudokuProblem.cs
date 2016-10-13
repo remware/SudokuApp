@@ -6,14 +6,14 @@ namespace SudokuApp.Model
 {
     public class SudokuProblem : INotifyPropertyChanged
     {
-        private string name;
+        private string _name;
 
         public string Name
         {
-            get { return name; }
+            get { return _name; }
             set
             {
-                name = value;
+                _name = value;
                 RaisePropertyChanged("Name");
             }
         }
@@ -28,32 +28,32 @@ namespace SudokuApp.Model
         }
 
         // columns filled
-        private int complexity;
+        private int _complexity;
         public int Complexity
         {
-            get { return complexity; }
+            get { return _complexity; }
             set
             {
-                complexity = value;
+                _complexity = value;
                 RaisePropertyChanged("Complexity");
             }
         }
 
         // rows filled
-        private int level;
+        private int _level;
         public int Level
         {
-            get { return level; }
+            get { return _level; }
             set
             {
-                level = value;
+                _level = value;
                 RaisePropertyChanged("Level");
             }
         }
 
         public string DisplayText => $"{Name} problem level: {Level}, complexity: {Complexity} ";
 
-        public SudokuProblemBase Challenge;
+        public SudokuData Challenge;
 
         public override bool Equals(object obj)
         {

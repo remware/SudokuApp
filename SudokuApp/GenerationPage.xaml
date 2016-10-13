@@ -28,9 +28,9 @@
             </Expander.Header>
             <Expander.Content>
                 <ScrollViewer Height="Auto">
-                    <TextBlock TextWrapping="Wrap">
-                     Lorem ipsum dolor sit amet, consectetur adipisicing elit
-                    </TextBlock>
+                    <StackPanel>
+                        <DataGrid Name="ProblemsDataGrid" />
+                    </StackPanel>
                 </ScrollViewer>
             </Expander.Content>
         </Expander>

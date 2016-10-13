@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using MySql.Data.MySqlClient;
-using System.Data.SqlClient;
 
 namespace SudokuApp.Repository
 {
@@ -29,11 +28,11 @@ namespace SudokuApp.Repository
         /// <summary>
         /// https://dev.mysql.com/doc/connector-net/en/connector-net-entityframework60.html
         /// </summary>
-        public static void Seeding()
+        public void Seeder()
         {
-            var connectionString = "server=localhost;port=3305;database=parking;uid=root;";
+            var connectionString = "server=localhost;port=3305;database=SudokuEntities;uid=root;";
 
-            using (var connection = new SqlConnection(connectionString))
+            using (var connection = new MySqlConnection(connectionString))
             {
                 // Create database if not exists
                 using (var contextDb = new SudokuContext(connection, false))
@@ -51,7 +50,7 @@ namespace SudokuApp.Repository
                     {
 
                         // Interception/SQL logging
-                        context.Database.Log = (string message) => { Console.WriteLine(message); };
+                        context.Database.Log = (message) => { Console.WriteLine(message); };
 
                         // Passing an existing transaction to the context
                         context.Database.UseTransaction(transaction);
