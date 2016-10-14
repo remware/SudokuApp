@@ -1,5 +1,4 @@
 ﻿using SudokuApp.Domain;
-using System;
 using System.ComponentModel;
 
 namespace SudokuApp.Model

@@ -1,4 +1,4 @@
-﻿using System.Windows;
+﻿using SudokuApp.ViewModel;
 using System.Windows.Controls;
 
 namespace SudokuApp
@@ -13,12 +13,11 @@ namespace SudokuApp
             InitializeComponent();
         }
 
-        // Custom constructor to pass generator data
-        public GenerationPage(object data) : this()
+        // Custom onstructor 
+        public GenerationPage(string level) : this()
         {
-            // Bind to expense report data.
-            this.DataContext = data;
+            //  the level selected            
+            DataContext = new SudokuProblemViewModel(level);            
         }
-
     }
 }

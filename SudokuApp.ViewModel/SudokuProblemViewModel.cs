@@ -6,15 +6,25 @@ using System.Linq;
 namespace SudokuApp.ViewModel
 {
     public class SudokuProblemViewModel : BaseNotifyPropertyChanged
-    {      
-        public SudokuProblemViewModel(IService service, INavigator navigator)
+    {
+        public SudokuProblemViewModel(string level)
         {
- 
-            Problems = new ObservableCollection<SudokuProblem>();
-            
-            Service = service ?? new DefaultServiceProvider();
+            Service = new DefaultServiceProvider();
+            Navigator = new DefaultNavigator();
+            SelectedLevel = level;
+            InitializeVm();
+        }
 
+        public SudokuProblemViewModel(IService service, INavigator navigator)
+        {                         
+            Service = service ?? new DefaultServiceProvider();
             Navigator = navigator;
+            InitializeVm();
+        }
+
+        public void InitializeVm()
+        {
+            Problems = new ObservableCollection<SudokuProblem>();
 
             PopulateProblems(Service.GetProblems());
 
@@ -29,6 +39,8 @@ namespace SudokuApp.ViewModel
 
             CurrentProblem = Problems.FirstOrDefault();
         }
+
+        public string SelectedLevel { get; set; }
 
         public void ViewSudokuProblem(SudokuProblem problem)
         {
@@ -49,18 +61,15 @@ namespace SudokuApp.ViewModel
         public IService Service { get; private set; }
 
         public INavigator Navigator { get; private set; }
-        public bool CanDelete
-        {
-            get { return CurrentProblem != null; }
-        }
+        public bool CanDelete => CurrentProblem != null;
 
-        private SudokuProblem currentProblem;
+        private SudokuProblem _currentProblem;
         public SudokuProblem CurrentProblem
         {
-            get { return currentProblem; }
+            get { return _currentProblem; }
             set
             {
-                currentProblem = value;
+                _currentProblem = value;
                 RaisePropertyChanged("CurrentProblem");
                 RaisePropertyChanged("CanDelete");
                 Delete.RaiseCanExecuteChanged();

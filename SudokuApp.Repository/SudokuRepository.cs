@@ -11,10 +11,7 @@ namespace SudokuApp.Repository
             // no-op
         }
 
-        public SudokuContext SudokuContext
-        {
-            get { return Context as SudokuContext; }
-        }
+        public SudokuContext SudokuContext => Context as SudokuContext;
 
         public IEnumerable<SudokuDataAccess> GetEasySudokuProblems(int topCount)
         {

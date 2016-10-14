@@ -114,6 +114,16 @@
   <ItemGroup>
     <Folder Include="images\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SudokuApp.Model\SudokuApp.Model.csproj">
+      <Project>{a9d2850c-0b1e-4f2c-98a2-42bd61b2bb84}</Project>
+      <Name>SudokuApp.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SudokuApp.ViewModel\Sudoku.ViewModel.csproj">
+      <Project>{73904322-DD05-4EAD-994D-763A5A3FF201}</Project>
+      <Name>Sudoku.ViewModel</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

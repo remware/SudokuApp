@@ -11,30 +11,9 @@
     <Grid  Margin="10,0,10,10">
 
         <Grid.Resources>
-            <!-- generator settings Data -->
-            <XmlDataProvider x:Key="ComplexityDataSource" XPath="Complexity">
-                <x:XData>
-                    <Complexity xmlns="">
-                        <Level Name="Easy" RuleSet="Default">
-                            <Complex RuleType="Column" Filled="7" />
-                            <Complex RuleType="Row" Filled="5" />
-                        </Level>
-
-                        <Level Name="Medium" RuleSet="Beginner">
-                            <Complex RuleType="Column" Filled="5" />
-                            <Complex RuleType="Row" Filled="5" />
-                        </Level>
-
-                        <Level Name="High" RuleSet="Advanced">
-                            <Complex RuleType="Column" Filled="3" />
-                            <Complex RuleType="Row" Filled="3" />
-                        </Level>
-                    </Complexity>
-                </x:XData>
-            </XmlDataProvider>
 
             <!-- Name item template in listbox -->
-            <DataTemplate x:Key="nameItemTemplate">
+            <DataTemplate x:Key="NameItemTemplate">
                 <Label Content="{Binding XPath=@Name}"/>
             </DataTemplate>
 
@@ -74,10 +53,11 @@
         <Border Grid.Column="1" Grid.Row="1"  Style="{StaticResource listHeaderStyle}">
                 <Label Style="{StaticResource listHeaderTextStyle}">Difficulty</Label>
         </Border>
-    
-        <ListBox Name="complexityListBox" Grid.Column="1" Grid.Row="2"
-            ItemsSource="{Binding Source={StaticResource ComplexityDataSource}, XPath=Level}"
-            ItemTemplate="{StaticResource nameItemTemplate}">
+
+        <ListBox Name="ComplexityListBox" Grid.Column="1" Grid.Row="2">
+            <ListBoxItem Content="Easy"/>
+            <ListBoxItem>Medium</ListBoxItem>
+            <ListBoxItem>Difficult</ListBoxItem>
         </ListBox>
 
         <!-- Generate sudoku button -->

@@ -15,10 +15,13 @@ namespace SudokuApp
 
         private void Go_Generate(object sender, RoutedEventArgs e)
         {
-            // View Expense Report
-            GenerationPage generateSudokuPage = new GenerationPage(this.complexityListBox.SelectedItem);
-            this.NavigationService.Navigate(generateSudokuPage);
-
+            // View Selection level
+            var lbi =  ComplexityListBox.SelectedItem as ListBoxItem;
+            var selected = lbi?.Content.ToString() ?? "Easy";
+            
+                var generateSudokuPage = new GenerationPage(selected);
+                NavigationService.Navigate(generateSudokuPage);
+            
         }
     }
 }

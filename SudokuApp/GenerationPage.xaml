@@ -4,11 +4,10 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SudokuApp"
+      xmlns:viewModel="clr-namespace:SudokuApp.ViewModel;assembly=SudokuApp.ViewModel"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
-      DataContext="{Binding SudokuProblemViewModel}"
-      Title="Statistics Page">
-
+      Title="Generator Page">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="230" />
@@ -30,15 +29,19 @@
             <Expander.Content>
                 <ScrollViewer Height="Auto">
                     <StackPanel>
-                        <DataGrid Name="ProblemsDataGrid" />
+                        <DataGrid Name="ProblemsDataGrid" ItemsSource="{Binding Problems}" AutoGenerateColumns="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" />
+                                <DataGridTextColumn Header="Level" Binding="{Binding Path=Level}" />
+                                <DataGridTextColumn Header="Complex" Binding="{Binding Path=Complexity}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
                     </StackPanel>
                 </ScrollViewer>
             </Expander.Content>
         </Expander>
 
-        <Label Grid.Column="1" Style="{StaticResource headerTextStyle}">
-            Sudoku level
-        </Label>
+        <Label Grid.Row="0" Grid.Column="1" Style="{StaticResource headerTextStyle}"> Sudoku </Label>
         <Grid Margin="10" Grid.Column="1" Grid.Row="1">
 
             <Grid.ColumnDefinitions>
@@ -54,25 +57,21 @@
             <!-- Level -->
             <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Orientation="Horizontal">
                 <Label Style="{StaticResource labelStyle}">Level:</Label>
-                <Label Style="{StaticResource labelStyle}" Content="{Binding XPath=@Name}"></Label>
+                <Label Style="{StaticResource labelStyle}" Content="{Binding Path=CurrentProblem.Level}"></Label>
             </StackPanel>
 
-            <!-- From DB -->
+            <!-- Complexity -->
             <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Orientation="Horizontal">
                 <Label Style="{StaticResource labelStyle}">Rule Set:</Label>
-                <Label Style="{StaticResource labelStyle}" Content="{Binding XPath=@RuleSet}"></Label>
+                <Label Style="{StaticResource labelStyle}" Content="{Binding Path=CurrentProblem.Complexity}"></Label>
             </StackPanel>
 
-            <Grid Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" VerticalAlignment="Top" 
-          HorizontalAlignment="Left">
-                <!-- Generation table -->
-                <DataGrid ItemsSource="{Binding XPath=Complex}" ColumnHeaderStyle="{StaticResource columnHeaderStyle}" AutoGenerateColumns="False" RowHeaderWidth="0" >
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Complexity" Binding="{Binding XPath=@RuleType}" />
-                        <DataGridTextColumn Header="Hints" Binding="{Binding XPath=@Filled}" />
-                    </DataGrid.Columns>
-                </DataGrid>
-            </Grid>
+            <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Orientation="Horizontal">
+                <!-- Selected level -->
+                <Label Style="{StaticResource labelStyle}">Selected</Label>
+                <Label Style="{StaticResource labelStyle}" Content="{Binding Path=SelectedLevel}" />
+               
+            </StackPanel>
         </Grid>
     </Grid>
 </Page>
