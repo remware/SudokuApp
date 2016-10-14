@@ -30,7 +30,7 @@ namespace SudokuApp.Repository
         /// </summary>
         public void Seeder()
         {
-            var connectionString = "server=localhost;port=3305;database=SudokuEntities;uid=root;";
+            var connectionString = "server=localhost;port=3305;database=SudokuEntities;uid=root;password=123456";
 
             using (var connection = new MySqlConnection(connectionString))
             {

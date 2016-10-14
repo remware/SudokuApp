@@ -12,6 +12,7 @@ namespace SudokuApp.Repository
         public int Id { get; set; }
         public string Name { get; set; }
         public string Author { get; set; }
+        [Required]
         public string ProblemState { get; set; }
         public bool Solved { get; set; }
         public DateTime UpdatedDate { get; set; }
