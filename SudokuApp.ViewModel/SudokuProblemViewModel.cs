@@ -7,6 +7,8 @@ namespace SudokuApp.ViewModel
 {
     public class SudokuProblemViewModel : BaseNotifyPropertyChanged
     {
+        private const int ProblemsPerPage = 3;
+
         public SudokuProblemViewModel(string level)
         {
             Service = new DefaultServiceProvider();
@@ -19,6 +21,7 @@ namespace SudokuApp.ViewModel
         {                         
             Service = service ?? new DefaultServiceProvider();
             Navigator = navigator;
+            SelectedLevel = "Easy";
             InitializeVm();
         }
 
@@ -26,7 +29,7 @@ namespace SudokuApp.ViewModel
         {
             Problems = new ObservableCollection<SudokuProblem>();
 
-            PopulateProblems(Service.GetProblems());
+            PopulateProblems(Service.GetProblems(SelectedLevel, ProblemsPerPage));
 
             Delete = new DeleteCommand(
                 Service,
@@ -34,7 +37,7 @@ namespace SudokuApp.ViewModel
                 problem =>
                 {
                     CurrentProblem = null;
-                    PopulateProblems(Service.GetProblems());
+                    PopulateProblems(Service.GetProblems(SelectedLevel, ProblemsPerPage));
                 });
 
             CurrentProblem = Problems.FirstOrDefault();

@@ -15,7 +15,7 @@ namespace SudokuApp.ViewModel
             using (var unitOfWork = new UnitOfWork(new SudokuContext()))
             {
                 // from  SudokuRepo
-                var easyProblem = unitOfWork.Sudokus.GetEasySudokuProblems(10).FirstOrDefault(s => s.Name.Equals(name));
+                var easyProblem = unitOfWork.Sudokus.GetSudokuProblems(name, 10).FirstOrDefault(s => s.Name.Equals(name));
                 if (easyProblem != null)
                 {
                     problemData = new SudokuData(easyProblem.ProblemState);

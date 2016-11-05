@@ -33,7 +33,7 @@
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" />
                                 <DataGridTextColumn Header="Level" Binding="{Binding Path=Level}" />
-                                <DataGridTextColumn Header="Complex" Binding="{Binding Path=Complexity}" />
+                                <DataGridTextColumn Header="Complex" Binding="{Binding Path=Complexity}" Width="*"/>
                             </DataGrid.Columns>
                         </DataGrid>
                     </StackPanel>

@@ -8,19 +8,19 @@ namespace SudokuApp.UnitTests
     [TestClass]
     public class SudokuProblemViewModelTests : UnitTestBase
     {
-        private MockRepository mockRepository;        
+        private MockRepository _mockRepository;        
 
         [TestInitialize]
         public void TestInitialize()
         {
-            mockRepository = new MockRepository(MockBehavior.Strict);
+            _mockRepository = new MockRepository(MockBehavior.Strict);
 
         }
 
         [TestCleanup]
         public void TestCleanup()
         {
-            this.mockRepository.VerifyAll();
+            this._mockRepository.VerifyAll();
         }
 
         [TestMethod]

@@ -30,7 +30,7 @@ namespace SudokuApp.UnitTests
         [TestInitialize]
         private void TestSetup()
         {
-            serviceMock.Setup(x => x.GetProblems())
+            serviceMock.Setup(x => x.GetProblems(It.IsAny<string>(), It.IsAny<int>()))
                     .Returns(ExpectedProblemList);
             
         }

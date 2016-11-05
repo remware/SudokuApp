@@ -19,9 +19,8 @@ namespace SudokuApp
             var lbi =  ComplexityListBox.SelectedItem as ListBoxItem;
             var selected = lbi?.Content.ToString() ?? "Easy";
             
-                var generateSudokuPage = new GenerationPage(selected);
-                NavigationService.Navigate(generateSudokuPage);
-            
+            var generateSudokuPage = new GenerationPage(selected);
+            NavigationService?.Navigate(generateSudokuPage);
         }
     }
 }

@@ -5,7 +5,7 @@ using SudokuApp.Repository;
 namespace SudokuApp.ViewModel
 {
     /// <summary>
-    /// Storage Service
+    /// Interface to Sudoko Storage operations
     /// </summary>
     public interface IStorage
     {

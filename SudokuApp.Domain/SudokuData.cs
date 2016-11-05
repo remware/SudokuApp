@@ -6,7 +6,7 @@ namespace SudokuApp.Domain
 {
     public class SudokuData
     {
-        public IList<IList<int>> SudokuSquare { get; set; }
+        public IList<IList<int>> SudokuSquare { get; set; } = new List<IList<int>>();
 
         private const int Maxsize = 9;
 
@@ -37,7 +37,7 @@ namespace SudokuApp.Domain
         }
 
         public void InitializeSquare()
-        {
+        {            
             for (var i = 0; i < Maxsize; i++)
             {
                 SudokuSquare.Add(EmptyRow);
