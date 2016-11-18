@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 
 namespace SudokuApp.Repository
 {
-    public interface IRepository<TEntity> where TEntity : class
+    public interface IRepository<TEntity> : IDataAccess where TEntity : class
     {
         TEntity Get(int id);
         IEnumerable<TEntity> GetAll();

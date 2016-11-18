@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using MySql.Data.MySqlClient;
+using System.Threading.Tasks;
+using System.Data.Entity.Validation;
 
 namespace SudokuApp.Repository
 {
@@ -23,6 +25,18 @@ namespace SudokuApp.Repository
         public void Dispose()
         {
             _context.Dispose();
+        }
+
+        public async Task CommitAsync()
+        {
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbEntityValidationException ex)
+            {
+                throw new DbDataValidationFailedException(ex.GetIssues(), ex);
+            }
         }
 
         /// <summary>

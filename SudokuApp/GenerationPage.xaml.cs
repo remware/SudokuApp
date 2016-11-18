@@ -6,7 +6,7 @@ namespace SudokuApp
     /// <summary>
     /// Interaction logic for GenerationPage.xaml
     /// </summary>
-    public partial class GenerationPage : Page
+    public partial class GenerationPage
     {
         public GenerationPage()
         {

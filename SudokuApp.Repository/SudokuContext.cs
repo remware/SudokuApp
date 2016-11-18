@@ -11,7 +11,12 @@ namespace SudokuApp.Repository
     {
         public SudokuContext() : base("name=SudokuEntities")
         {
-            // no-op
+            // default construction
+        }
+
+        public SudokuContext(string databaseName) : base(databaseName)
+        {
+            // constructor to use a different database name
         }
 
         // Constructor to use on a DbConnection that is already opened
@@ -54,5 +59,21 @@ namespace SudokuApp.Repository
                 entry.Property("UpdatedDate").CurrentValue = DateTime.UtcNow;
             }
         }
+
+        private static void BackupDatabaseCopy()
+        {
+            using (var context =
+            new SudokuContext("SudokuEntitiesBackup"))
+            {
+                context.SudokuProblems.Add(new SudokuDataAccess
+                {
+                    Name = "Difficult",
+                    ProblemState = "000000704003207000080090530000074000049506280000820000012050090090702300506000000",
+                    Author = "Rem"
+                });
+                context.SaveChanges();
+            }
+        }
+        
     }
 }

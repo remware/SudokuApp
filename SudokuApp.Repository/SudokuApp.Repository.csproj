@@ -57,9 +57,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccess.cs" />
+    <Compile Include="DataAccessProvider.cs" />
+    <Compile Include="DbDataValidationFailedException.cs" />
+    <Compile Include="DbValidationExceptionExtension.cs" />
+    <Compile Include="GenericDataAccess.cs" />
+    <Compile Include="IDataAccess.cs" />
+    <Compile Include="IDataAccessProvider.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="ISudokuRepository.cs" />
     <Compile Include="IUnitOfWork.cs" />
+    <Compile Include="PromptForDropCreateDatabaseWhenModelChanges.cs" />
     <Compile Include="Repository.cs" />
     <Compile Include="SudokuContext.cs" />
     <Compile Include="SudokuDataAccess.cs" />
@@ -69,7 +77,9 @@
     <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

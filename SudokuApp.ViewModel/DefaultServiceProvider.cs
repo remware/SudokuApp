@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using SudokuApp.Domain;
 using SudokuApp.Repository;
-
+using System.Data.Entity;
 
 namespace SudokuApp.ViewModel
 {
@@ -22,6 +22,7 @@ namespace SudokuApp.ViewModel
 
         public DefaultServiceProvider()
         {
+            Database.SetInitializer(new PromptForDropCreateDatabaseWhenModelChanges<SudokuContext>());
             _repositoryProvider = new SudokuRepository( new SudokuContext());
         }
 
