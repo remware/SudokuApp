@@ -60,13 +60,18 @@
     <Compile Include="DataAccess.cs" />
     <Compile Include="DataAccessProvider.cs" />
     <Compile Include="DbDataValidationFailedException.cs" />
-    <Compile Include="DbValidationExceptionExtension.cs" />
+    <Compile Include="DbEntityValidationExceptionExtension.cs" />
     <Compile Include="GenericDataAccess.cs" />
     <Compile Include="IDataAccess.cs" />
     <Compile Include="IDataAccessProvider.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="ISudokuRepository.cs" />
     <Compile Include="IUnitOfWork.cs" />
+    <Compile Include="Migrations\default_FirstBook.cs" />
+    <Compile Include="Migrations\default_FirstBook.Designer.cs">
+      <DependentUpon>default_FirstBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PromptForDropCreateDatabaseWhenModelChanges.cs" />
     <Compile Include="Repository.cs" />
     <Compile Include="SudokuContext.cs" />
@@ -81,6 +86,11 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\default_FirstBook.resx">
+      <DependentUpon>default_FirstBook.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

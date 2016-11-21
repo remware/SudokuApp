@@ -20,3 +20,7 @@ The business logic is typically kept as a *service* separated from the model, th
 - simulators ( problem solver)
 
 
+**Installation**
+
+The project comes with installer package. Just run the msi program and follow the steps.
+You need MySql installed either locally or an url where to contact it with appropriate user credentials.
