@@ -3,13 +3,12 @@ using System.Data.Entity;
 
 namespace SudokuApp.Repository
 {
-    public class PromptForDropCreateDatabaseWhenModelChanges<TContext>
-        : IDatabaseInitializer<TContext> where TContext : DbContext
+    public class SudokuContextDataBaseInitializer : IDatabaseInitializer<SudokuContext> 
     {
-        public void InitializeDatabase(TContext context)
+        public void InitializeDatabase(SudokuContext context)
         {
             // If the database exists and matches the model
-            // there is nothing to do
+            // you can call Seeder or not
             var exists = context.Database.Exists();
             if (exists && context.Database.CompatibleWithModel(true))
             {
@@ -34,6 +33,7 @@ namespace SudokuApp.Repository
             // Database either didn't exist or it didn't match
             // the model and the user chose to delete it
             context.Database.Create();
-        }
+        }  
+
     }
 }

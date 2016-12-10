@@ -22,7 +22,7 @@ namespace SudokuApp.ViewModel
 
         public DefaultServiceProvider()
         {
-            Database.SetInitializer(new PromptForDropCreateDatabaseWhenModelChanges<SudokuContext>());
+            Database.SetInitializer(new SudokuContextDataBaseInitializer());
             _repositoryProvider = new SudokuRepository( new SudokuContext());
         }
 
@@ -43,7 +43,7 @@ namespace SudokuApp.ViewModel
                 }
             };
 
-            if (ChallengeLevel.Supported.Any(s => !s.Contains(level))) return defaultProblem;
+            if (!ChallengeLevel.Supported.Any(s => s.Contains(level))) return defaultProblem;
 
             var allAvailable = _repositoryProvider.GetSudokuProblems(level, amount);
             if (allAvailable != null) 

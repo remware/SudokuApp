@@ -1,5 +1,5 @@
 ﻿using SudokuApp.ViewModel;
-using System.Windows.Controls;
+using System.Windows;
 
 namespace SudokuApp
 {
@@ -18,6 +18,12 @@ namespace SudokuApp
         {
             //  the level selected            
             DataContext = new SudokuProblemViewModel(level);            
+        }
+
+        private void Go_Solve(object sender, RoutedEventArgs e)
+        {            
+            var gameBoardSudokuPage = new GameBoard();
+            NavigationService?.Navigate(gameBoardSudokuPage);
         }
     }
 }

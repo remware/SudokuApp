@@ -9,12 +9,30 @@ namespace SudokuApp.IntegrationTests
     public class DataAccessServiceTest
     {
         #region test data
-        private static void Seed()
+        public class SudokuContextSeedInitializer : DropCreateDatabaseAlways<SudokuContext>
         {
-            // pass SudokuContext context parameter in the future
-            Database.SetInitializer( new DropCreateDatabaseAlways<SudokuContext>());            ;
+            protected override void Seed(SudokuContext context)
+            {
+                context.SudokuProblems.Add(
+                new SudokuDataAccess
+                {
+                    Id = 1,
+                    Name = "Easy",
+                    Author = "Test",
+                    ProblemState = "740900050020080000109007000850030012000158000610070085000700508000065030070004069",
+                    Solved = false
+                });
+                context.SaveChanges();
+            }
         }
         #endregion
+
+        [TestInitialize]
+        public void Setup()
+
+        {
+            Database.SetInitializer(new SudokuContextSeedInitializer());
+        }
 
         [TestMethod]
         public void WhenDbIsInitialized_SampleSudoku_isFound()
@@ -31,4 +49,6 @@ namespace SudokuApp.IntegrationTests
             }
         }
     }
+
+    
 }

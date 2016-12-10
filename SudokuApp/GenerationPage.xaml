@@ -68,8 +68,10 @@
                 <!-- Selected level -->
                 <Label Style="{StaticResource labelStyle}">Selected</Label>
                 <Label Style="{StaticResource labelStyle}" Content="{Binding Path=SelectedLevel}" />
-               
             </StackPanel>
+
+            <!-- Generate sudoku button -->
+            <Button Grid.Column="0" Grid.Row="3" Click="Go_Solve" Style="{StaticResource buttonStyle}">Go Solve</Button>
         </Grid>
     </Grid>
 </Page>

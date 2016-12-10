@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
@@ -16,7 +15,10 @@ namespace SudokuApp.Repository
 
         public IEnumerable<SudokuDataAccess> GetSudokuProblems(string complexity, int topCount)
         {
-            return SudokuContext.SudokuProblems.Include(s=>s.Name.Contains(complexity)).OrderByDescending(s => s.Name).Take(topCount);
+            var topProblems = SudokuContext.SudokuProblems
+                      .Where(p => p.Name.Contains(complexity)).Take(topCount);
+
+            return topProblems;            
         }
 
 
