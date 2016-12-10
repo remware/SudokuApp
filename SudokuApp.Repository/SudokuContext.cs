@@ -4,15 +4,19 @@ using System.Data.Entity;
 using System.Linq;
 using MySql.Data.Entity;
 using System.Data.Entity.Validation;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SudokuApp.Repository
 {
     [DbConfigurationType(typeof(MySqlEFConfiguration))]
     public class SudokuContext : DbContext
     {
-        public SudokuContext() : base("name=SudokuEntities")
+        /// <summary>
+        /// MySQL Context needs database name in lower letters
+        /// </summary>
+        public SudokuContext() : base("name=sudokuentities")
         {
-            // default construction
+            // default construction            
         }
 
         public SudokuContext(string databaseName) : base(databaseName)
@@ -30,14 +34,20 @@ namespace SudokuApp.Repository
         public virtual DbSet<SudokuDataAccess> SudokuProblems { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<SudokuDataAccess>().HasKey(m => m.Id);
+        {          
 
-            // shadow properties
-            modelBuilder.Entity<SudokuDataAccess>().Property<DateTime>(access => access.UpdatedDate);
+            modelBuilder.Entity<SudokuDataAccess>()
+                .ToTable("SudokuPoblems")
+                .MapToStoredProcedures()
+                .HasKey(entity => entity.Id)
+                .Property(entity => entity.Id).HasColumnName("id_problem").IsRequired()
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+                
+
+           
 
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<SudokuDataAccess>().MapToStoredProcedures();
+           
         }
 
         public override int SaveChanges()
@@ -65,6 +75,27 @@ namespace SudokuApp.Repository
                 }
                 throw;
             }
+            catch (System.Data.Entity.Core.UpdateException e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+
+            catch (System.Data.Entity.Infrastructure.DbUpdateException ex) //DbContext
+            {
+                Console.WriteLine(" error occurred: " + ex.Message + " inner " + ex.InnerException);
+                throw;
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex) 
+            {
+                Console.WriteLine("Error " + ex.Number + " has occurred: " + ex.Message + " inner " + ex.InnerException);
+                throw;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.InnerException);
+                throw;
+            }
             return result;
         }
 
@@ -76,7 +107,7 @@ namespace SudokuApp.Repository
 
             foreach (var entry in modifiedSourceInfo)
             {
-                entry.Property("UpdatedDate").CurrentValue = DateTime.UtcNow;
+                entry.Property("UpdatedDate").CurrentValue = DateTime.Now;
             }
         }
 
