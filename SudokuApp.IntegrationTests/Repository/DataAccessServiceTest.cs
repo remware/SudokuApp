@@ -1,10 +1,12 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SudokuApp.Repository;
 using System.Data.Entity;
 
 namespace SudokuApp.IntegrationTests
 {
+    /// <summary>
+    /// This integration test should hit database testsudokuentities
+    /// </summary>
     [TestClass]
     public class DataAccessServiceTest
     {

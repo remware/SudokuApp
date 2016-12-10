@@ -9,8 +9,6 @@ namespace SudokuApp.UnitTests
     public class UnitTestBase
     {
         private readonly Mock<IService> serviceMock = new Mock<IService>();
-        private IService anyService;
-
         public readonly INavigator Navigator = new DefaultNavigator();
 
         public readonly List<SudokuProblem> ExpectedProblemList = new List<SudokuProblem>
@@ -24,11 +22,11 @@ namespace SudokuApp.UnitTests
         };
         public SudokuProblemViewModel GivenSudokuProblemViewModel()
         {
-            return new SudokuProblemViewModel(anyService, Navigator);
+            return new SudokuProblemViewModel(serviceMock.Object, Navigator);
         }
 
         [TestInitialize]
-        private void TestSetup()
+        public void TestSetup()
         {
             serviceMock.Setup(x => x.GetProblems(It.IsAny<string>(), It.IsAny<int>()))
                     .Returns(ExpectedProblemList);

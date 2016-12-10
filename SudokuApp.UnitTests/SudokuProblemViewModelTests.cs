@@ -20,7 +20,7 @@ namespace SudokuApp.UnitTests
         [TestCleanup]
         public void TestCleanup()
         {
-            this._mockRepository.VerifyAll();
+            _mockRepository.VerifyAll();
         }
 
         [TestMethod]
@@ -38,7 +38,7 @@ namespace SudokuApp.UnitTests
         public void GivenSudokuProblemView_NavigateToSolution_IsOK()
         {
             // Arrange
-            var viewModel = this.GivenSudokuProblemViewModel();            
+            var viewModel = GivenSudokuProblemViewModel();            
             //Act
             viewModel.ViewSudokuProblem(viewModel.CurrentProblem);
             //Assert
