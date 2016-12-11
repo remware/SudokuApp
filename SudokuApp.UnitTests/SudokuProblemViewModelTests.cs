@@ -14,7 +14,6 @@ namespace SudokuApp.UnitTests
         public void TestInitialize()
         {
             _mockRepository = new MockRepository(MockBehavior.Strict);
-
         }
 
         [TestCleanup]

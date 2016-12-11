@@ -22,7 +22,7 @@ namespace SudokuApp.Domain
            InitializeSquare();
             var pos = 0;
             var row = 0;
-            if (packedData.Length > 80) return;
+            if (packedData.Length != 81) return;
 
             foreach (var number in packedData)
             {

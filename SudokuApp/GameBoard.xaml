@@ -7,28 +7,20 @@
       d:DesignHeight="300" d:DesignWidth="300"
       Title="GameBoard">
 
-    <Grid>
+    <Grid x:Name="Test1">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
             <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
         </Grid.RowDefinitions>
 
-        <TextBlock Text="R0C0 Rect0" Grid.Row="0" Grid.Column="0" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-        <TextBlock Text="R0C1 Rect1" Grid.Row="0" Grid.Column="1" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-        <TextBlock Text="R0C2 Rect2" Grid.Row="0" Grid.Column="2" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-        <TextBlock Text="R1C0 Rect3" Grid.Row="1" Grid.Column="0" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-        <TextBlock Text="R1C1 Rect4" Grid.Row="1" Grid.Column="1" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-        <TextBlock Text="R1C1 Rect5" Grid.Row="1" Grid.Column="2" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-        <TextBlock Text="R2C0 Rect6" Grid.Row="2" Grid.Column="0" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-        <TextBlock Text="R2C1 Rect7" Grid.Row="2" Grid.Column="1" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-        <TextBlock Text="R2C2 Rect8" Grid.Row="2" Grid.Column="2" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+        <DataGrid x:Name="GridView" ItemsSource="{Binding CellsTable}" AutoGenerateColumns="False" >
+
+        </DataGrid>
 
     </Grid>
+
+ 
 </Page>

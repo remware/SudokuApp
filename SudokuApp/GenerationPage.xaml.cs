@@ -8,21 +8,24 @@ namespace SudokuApp
     /// </summary>
     public partial class GenerationPage
     {
+        private string selectedLevel;
+
         public GenerationPage()
         {
             InitializeComponent();
         }
 
-        // Custom onstructor 
+        // Custom constructor 
         public GenerationPage(string level) : this()
         {
             //  the level selected            
+            selectedLevel = level;
             DataContext = new SudokuProblemViewModel(level);            
         }
 
         private void Go_Solve(object sender, RoutedEventArgs e)
         {            
-            var gameBoardSudokuPage = new GameBoard();
+            var gameBoardSudokuPage = new GameBoard(selectedLevel);
             NavigationService?.Navigate(gameBoardSudokuPage);
         }
     }

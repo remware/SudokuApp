@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using SudokuApp.ViewModel;
+using System.Windows.Controls;
 
 namespace SudokuApp
 {
@@ -9,7 +10,12 @@ namespace SudokuApp
     {
         public GameBoard()
         {
-            InitializeComponent();
+            InitializeComponent();            
+        }
+
+        public GameBoard(string level) : this()
+        {
+            DataContext = new SudokuSolutionViewModel(level);
         }
     }
 }
